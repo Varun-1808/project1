@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class BalloonBurst {
+
+  public static int findMinArrows(int[][] balloons) {
+
+    Arrays.sort(balloons, (a, b) -> Integer.compare(a[1], b[1]));
+
+    int arrows = 0;
+
+    int lastArrowPosition = Integer.MIN_VALUE;
+
+       for (int[] balloon : balloons) {
+
+      int start = balloon[0];
+
+      int end = balloon[1];
+
+            if (start > lastArrowPosition) {
+
+        arrows++;
+
+        lastArrowPosition = end; }
+
+    }
+
+    return arrows;
+
+  }
+
+  public static void main(String[] args) {
+
+    int[][] balloons = {{10, 16}, {2, 8}, {1, 6}, {7, 12}};
+
+        System.out.println("Minimum arrows required: " + findMinArrows(balloons));
+
+  }
+
+}
