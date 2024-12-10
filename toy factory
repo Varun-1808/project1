@@ -1,0 +1,57 @@
+public class ToyFactory {
+
+  public static int moveEmptyBoxesToEnd(int[] boxes) {
+
+    int nonZeroIndex = 0;
+
+    int emptyCount = 0;
+
+    for (int i = 0; i < boxes.length; i++) {
+
+      if (boxes[i] != 0) {
+
+        // If the current element is not 0, move it to the nonZeroIndex
+
+        boxes[nonZeroIndex] = boxes[i];
+
+        nonZeroIndex++;
+
+      } else {
+
+        emptyCount++;
+
+      }
+
+    }
+
+        for (int i = nonZeroIndex; i < boxes.length; i++) {
+
+      boxes[i] = 0;
+
+    }
+
+    return emptyCount;
+
+  }
+
+  public static void main(String[] args) {
+
+    int[] boxes = {1, 0, 2, 0, 3, 4, 0, 5};
+
+    int emptyBoxesCount = moveEmptyBoxesToEnd(boxes);
+
+       System.out.println("Modified Array: ");
+
+    for (int i : boxes) {
+
+      System.out.print(i + " ");
+
+    }
+
+    System.out.println();
+
+    System.out.println("Count of Empty Boxes: " + emptyBoxesCount);
+
+  }
+
+}
